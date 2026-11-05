@@ -6,6 +6,7 @@ import mysql.connector, json, io
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 app=Flask(__name__); app.config.from_object(Config); CORS(app,origins=Config.CORS_ORIGINS.split(','))
+#Test
 def db():
  return mysql.connector.connect(**Config.MYSQL)
 @app.get('/api/health')
