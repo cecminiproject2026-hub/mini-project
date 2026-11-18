@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { 
   LayoutDashboard, 
   BookOpen, 
+  Database,
   FileSpreadsheet, 
   AlertTriangle, 
   Compass, 
@@ -25,6 +26,7 @@ import ProjectForm from './components/ProjectForm';
 import GithubIcon from './components/GithubIcon';
 import OverviewTab from './components/OverviewTab';
 import PapersTab from './components/PapersTab';
+import DatasetsTab from './components/DatasetsTab';
 import ComparisonTab from './components/ComparisonTab';
 import ProjectsTab from './components/ProjectsTab';
 import LimitationsTab from './components/LimitationsTab';
@@ -33,7 +35,7 @@ import InnovationsTab from './components/InnovationsTab';
 import EvaluationTab from './components/EvaluationTab';
 import ReportTab from './components/ReportTab';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API = import.meta.env.VITE_API_URL || '';
 
 function App() {
   // Theme state
@@ -141,7 +143,7 @@ function App() {
       setTab('Overview');
       setApiStatus('online');
     } catch (err) {
-      setError(`${err.message} — Check that Flask is running on ${API}, or use Demo Showcase.`);
+      setError(`${err.message} — Check that Flask is running${API ? ` at ${API}` : ' and restart the Vite dev server'}, or use Demo Showcase.`);
       setApiStatus('offline');
     } finally {
       setBusy(false);
@@ -152,6 +154,7 @@ function App() {
   const tabsList = [
     { id: 'Overview', label: 'Overview', icon: LayoutDashboard, count: null },
     { id: 'Research Papers', label: 'Research Papers', icon: BookOpen, count: data?.papers?.length },
+    { id: 'Datasets', label: 'Datasets', icon: Database, count: null },
     { id: 'Paper Comparison', label: 'Paper Comparison', icon: FileSpreadsheet, count: data?.comparison?.length },
     { id: 'Existing Projects', label: 'Existing Projects', icon: GithubIcon, count: null },
     { id: 'Limitations', label: 'Limitations', icon: AlertTriangle, count: data?.limitations?.length },
@@ -351,6 +354,10 @@ function App() {
 
                 {tab === 'Research Papers' && (
                   <PapersTab papers={data.papers} />
+                )}
+
+                {tab === 'Datasets' && (
+                  <DatasetsTab form={form} />
                 )}
 
                 {tab === 'Paper Comparison' && (

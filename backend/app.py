@@ -29,6 +29,18 @@ def search():
  q=request.args.get('q','').strip()
  if not q:return jsonify({'error':'q is required'}),400
  papers,errors=search_papers(q); return jsonify({'papers':papers,'errors':errors})
+@app.get('/api/datasets/search')
+def dataset_search():
+ from requests.exceptions import RequestException
+ from services.dataset_search import DATASET_MODEL_NAME, search_datasets
+ q=request.args.get('q','').strip()
+ if not q:return jsonify({'error':'q is required'}),400
+ if len(q)>200:return jsonify({'error':'q must be 200 characters or fewer'}),400
+ try:
+  datasets=search_datasets(q)
+ except (RequestException, ValueError, OSError, RuntimeError, ImportError) as e:
+  return jsonify({'error':f'Dataset search failed: {e}'}),502
+ return jsonify({'datasets':datasets,'source':'Hugging Face Datasets','model':DATASET_MODEL_NAME})
 @app.post('/api/research/compare')
 @app.post('/api/research/similarity')
 def compare(): return project_analyze()
