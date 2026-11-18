@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Lightbulb, CheckCircle2, Circle, AlertCircle, Wrench, Sparkles, TrendingUp } from 'lucide-react';
-
+// Support for recommendation feature
 export default function InnovationsTab({ innovations = [] }) {
   const [selectedFeatures, setSelectedFeatures] = useState({});
 
