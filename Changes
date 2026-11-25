@@ -1,0 +1,798 @@
+TEAM DEVELOPMENT PLAN
+AI-Powered Student Project Research and Innovation Platform
+
+Team:
+- Vighnesh: , Batch 1 and Batch 2
+- Santosh: Batch 3
+- Rohan: Batch 4
+
+Main  order:
+1. Vighnesh - Batch 1: Core Evidence Backend
+2. Vighnesh - Batch 2: Literature and Dataset Intelligence
+3. Santosh - Batch 3: Workflow, Reporting, and Collaboration
+4. Rohan - Batch 4: Monitoring and Advanced Personalization
+
+Vighnesh is responsible for shared API contracts, database structures, core evidence services, merge approval, and team integration.
+Each person should work on a separate branch or separate assigned feature.
+Only one person should edit a shared file at a time.
+Complete and test one prompt before pushing or submitting it.
+Do not leave several unrelated prompts in one push.
+No Git commands are required in this document.
+
+
+================================================================
+GLOBAL PUSH AND PULL SEQUENCE
+================================================================
+
+Phase 1 - Shared foundation
+
+1. Vighnesh starts and completes Prompt 1.1.
+2. Vighnesh tests Prompt 1.1 and submits or pushes its feature branch.
+3. Vighnesh reviews and merges Prompt 1.1 into the stable main branch.
+4. Vighnesh confirms the API fields and database tables to the team.
+5. Santosh and Rohan pull the latest stable main branch.
+6. Santosh and Rohan wait for this merge before starting API-dependent work.
+
+Prompt 1.1 is the blocking step. It defines:
+- Project snapshot structure
+- Source and paper structure
+- Evidence structure
+- Claim structure
+- Confidence fields
+- API success and error responses
+- Database tables
+- Demo behavior
+
+
+Phase 2 - Parallel development
+
+After Prompt 1.1 is merged:
+
+1. Vighnesh continues with Prompt 1.2 and Batch 2.
+2. Santosh starts Prompt 3.1.
+3. Rohan starts Prompt 4.4.
+4. Santosh and Rohan develop independently, but pull the latest stable branch before starting every prompt.
+5. Vighnesh merges Batch 1 and Batch 2 changes before they are used by the UI.
+
+These three activities may run together:
+- Vighnesh develops backend evidence and literature features.
+- Santosh develops snapshot and frontend workflow features.
+- Rohan develops repository comparison and advanced independent features.
+
+
+Phase 3 - Integration
+
+Vighnesh reviews and merges pull requests in this order:
+
+1. Batch 1 - all core evidence prompts
+2. Batch 2 - literature and dataset prompts
+3. Batch 3 - frontend and workflow prompts
+4. Batch 4 - advanced monitoring and personalization prompts
+
+After every merge:
+1. Vighnesh announces which files or API fields changed.
+2. Everyone pulls the latest stable branch.
+3. Santosh and Rohan check whether their prompts depend on the changed fields.
+4. Work on the next prompt only after integration is confirmed.
+
+
+Merge priority:
+
+Highest:
+- Batch 1
+
+High:
+- Batch 2
+- Batch 3
+
+Medium:
+- Batch 4
+
+Batch 4 must not block or delay a core Batch 1, Batch 2, or Batch 3 merge.
+
+
+================================================================
+VIGHNESH - BATCH 1 AND BATCH 2
+================================================================
+
+Work for: Vighnesh
+
+
+Assigned work:
+- Core evidence backend
+- Database and API contracts
+- PDF and HTML ingestion
+- Citation verification
+- Explainable scores
+- Evidence-linked recommendations
+- Academic paper analysis
+- Patent and novelty search
+- Research trends
+- Dataset suitability
+- Gap and paper comparison confidence
+
+
+Vighnesh push and pull sequence
+
+Phase 1 - Create shared contract
+
+1. Run Prompt 1.1.
+2. Test the database and API response structures.
+3. Submit or push only Prompt 1.1.
+4. Merge it into the stable main branch.
+5. Notify everyone that the shared contracts are available.
+6. Everyone pulls the stable branch.
+
+
+Phase 2 - Evidence backend
+
+Run and merge these prompts in order:
+
+1. Prompt 1.2 - Full-text PDF and HTML ingestion
+2. Prompt 1.3 - Citation verification
+3. Prompt 1.4 - Explainable evaluation
+4. Prompt 1.5 - Evidence-linked innovations
+
+After each merge:
+1. Announce the changed endpoint or field.
+2. Ask Santosh to pull the stable branch before evidence UI changes.
+3. Ask Rohan to pull the stable branch before project or source structure changes.
+4. Do not merge the next prompt while the previous pull request is still unresolved.
+
+
+Phase 3 - Literature and dataset intelligence
+
+After Prompt 1.1 is merged, continue with:
+
+1. Prompt 2.1 - Structured paper reviews
+2. Prompt 2.2 - Patent and novelty search
+3. Prompt 2.3 - Research trends and citation networks
+4. Prompt 2.4 - Dataset suitability
+5. Prompt 2.5 - Paper comparison and gap confidence
+
+Before each merge:
+1. Complete and test only the selected prompt.
+2. Submit or push that prompt for review.
+3. Merge it into the stable branch.
+4. Tell Santosh and Rohan which API fields changed.
+5. Ask them to pull the stable branch.
+
+
+Vighnesh shared-file ownership
+
+Only Vighnesh edits these core areas during the initial integration period:
+- backend/app.py
+- backend/services/analysis.py
+- backend/services/paper_search.py
+- backend/services/dataset_search.py
+- Database models
+- Database migrations
+- Shared evidence response structures
+- Shared snapshot response structures
+
+Santosh and Rohan must not edit these files for their own prompts unless Vighnesh explicitly assigns the change.
+
+
+================================================================
+BATCH 1 - CORE EVIDENCE BACKEND
+================================================================
+
+
+Prompt 1.1 - Evidence Data Model and API Contracts
+
+Create a database and API structure for evidence-based research analysis.
+
+Implement:
+- A project snapshot model storing the project, analysis, timestamp, and version
+- A source/paper model storing title, authors, year, DOI, URL, abstract, and source provider
+- An evidence model storing source ID, quoted text, page or section, claim type, and confidence
+- An analysis claim model storing claim text, category, supporting evidence IDs, confidence, and verification status
+- Database migrations or SQL schema updates
+- GET and POST API endpoints for project snapshots
+- GET and POST API endpoints for evidence
+- Input validation and consistent JSON error responses
+- Demo behavior when MySQL is unavailable
+
+Do not change the existing UI unless an endpoint is required for testing.
+Use clear names and document response structures in code.
+
+Expected first merge:
+- This prompt must be merged before Santosh and Rohan start API-dependent work.
+
+
+Prompt 1.2 - Full-Text PDF and HTML Ingestion
+
+Add full-text document ingestion to the Flask backend.
+
+Implement:
+- PDF upload with a size limit
+- Public HTML/PDF URL ingestion
+- Text extraction and section detection
+- Page-number extraction for PDFs where possible
+- Metadata extraction for title, authors, and DOI
+- Removal of repeated headers, footers, and whitespace
+- A document status endpoint
+- Graceful handling of invalid files and inaccessible URLs
+- A searchable document record containing document, section, and page information
+
+Do not treat extracted text as a verified fact until its source and location are stored.
+
+
+Prompt 1.3 - Citation Verification and Evidence Snippets
+
+Implement:
+- A claim-verification service
+- Evidence passage selection
+- Direct page or section references
+- Source URL and DOI with every evidence record
+- Verified, partially-supported, and unsupported claim states
+- Transparent confidence calculation
+- An API endpoint accepting text claims and returning evidence
+- Accept/reject controls for evidence
+- Duplicate citation detection
+- Storage of verification activity
+
+Every claim must explain why it was accepted or rejected.
+Do not invent citations.
+
+
+Prompt 1.4 - Explainable Evaluation
+
+Replace the fixed novelty, innovation, feasibility, research-potential, and impact values.
+
+Implement:
+- Evidence-based metric calculations
+- A score for each metric
+- A short explanation for every score
+- Contributing evidence IDs
+- Missing evidence
+- Confidence for every metric
+- Clear warnings that scores are heuristic estimates
+
+Preserve existing fields and add:
+- score_confidence
+- score_explanation
+- supporting_evidence
+- missing_evidence
+- methodology
+
+Do not return a fake score when enough evidence is unavailable.
+
+
+Prompt 1.5 - Evidence-Linked Recommendations
+
+Replace static innovation recommendations.
+
+Implement:
+- Recommendations from detected limitations and research gaps
+- Feature name, explanation, solved problem, difficulty, and resources
+- Source paper or evidence IDs for every recommendation
+- Inferred, partially verified, and evidence-supported states
+- Confidence values
+- Duplicate recommendation detection
+- Accept/reject API
+- Storage of the user's decision and reason
+
+Keep existing frontend fields compatible.
+Static examples may remain only as demo fallback.
+
+
+Batch 1 required merge order:
+
+1.1
+2. 1.2
+3. 1.3
+4. 1.4
+5. 1.5
+
+
+================================================================
+BATCH 2 - LITERATURE AND DATASET INTELLIGENCE
+================================================================
+
+
+Prompt 2.1 - Structured Paper Review Extraction
+
+For each full-text or abstract document extract:
+- Research objective
+- Proposed method
+- Dataset
+- Baseline methods
+- Evaluation metrics
+- Main results
+- Limitations
+- Reproducibility information
+- Required resources
+- Future work
+
+Add a paper-review API and database model.
+
+Clearly mark values as:
+- Explicit
+- Inferred
+- Unavailable
+
+Add confidence and source location to every extracted field.
+
+
+Prompt 2.2 - Patent and Non-Academic Novelty Search
+
+Implement:
+- Configurable patent or novelty provider integration
+- Search using project title, description, domain, and technologies
+- Deduplication between academic and patent results
+- Patent title, abstract, owner, filing date, status, and URL
+- Similarity ranking with a clear explanation
+- Provider error and rate-limit reporting
+- A novelty-source API
+- Provider limitations
+
+Do not make a definitive legal-novelty claim.
+Label this as a novelty-search aid.
+
+
+Prompt 2.3 - Research Trends and Citation Networks
+
+Implement:
+- Publication counts by year
+- Method or keyword frequency over time
+- Most-cited papers from available provider data
+- Foundational paper identification
+- Author collaboration data where supported
+- Citation-network nodes and edges
+- A trend API
+- Graceful handling of incomplete citation information
+- Frontend-ready JSON structures
+
+Do not claim trend accuracy if provider metadata is incomplete.
+
+
+Prompt 2.4 - Dataset Suitability Checker
+
+Extend backend/services/dataset_search.py.
+
+For each dataset calculate and return:
+- License category
+- Commercial or academic-use status
+- Dataset size or download count
+- Language
+- Format
+- Missing metadata warnings
+- Gating status
+- Update frequency
+- Suitability for the submitted project
+- Licensing, bias, size, privacy, and provenance risk flags
+
+Add a filtered dataset API.
+Unknown license information must remain unknown.
+
+
+Prompt 2.5 - Paper Comparison and Gap Confidence
+
+Implement:
+- Side-by-side methodology, dataset, metric, result, limitation, and source fields
+- A confidence score for every gap statement
+- Supporting evidence IDs
+- Alternative interpretations
+- Low, medium, or high confidence
+- Hypothesis-only labeling
+- Confirm/reject gap endpoint
+- Clear distinction between absent evidence and contradictory evidence
+
+
+Batch 2 required merge order:
+
+2.1
+2.2
+2.3
+2.4
+2.5
+
+
+================================================================
+SANTOSH - BATCH 3
+================================================================
+
+Owner: Santosh
+
+Assigned work:
+- React frontend
+- Project snapshots
+- User workflows
+- Evidence display
+- Reports
+- Academic export formats
+- Advisor/student collaboration
+- Experiment planning
+
+Priority: first
+
+
+Santosh push and pull sequence
+
+Phase 1 - Wait for the shared contract
+
+1. Wait while Vighnesh runs and merges Prompt 1.1.
+2. After Vighnesh announces the merge, pull the latest stable branch.
+3. Start Prompt 3.1.
+4. Use only the documented shared fields.
+5. Complete local testing before submitting or pushing Prompt 3.1.
+6. Wait for Vighnesh to review and merge it.
+7. Pull the latest stable branch after the merge.
+
+
+Phase 2 - Evidence interface
+
+After Prompt 3.1 is merged:
+
+1. Pull the latest stable branch.
+2. Start Prompt 3.2.
+3. Coordinate with Vighnesh before changing evidence or claim fields.
+4. Submit or push Prompt 3.2 only after testing.
+5. Wait for Vighnesh to merge it.
+6. Pull the latest stable branch before continuing.
+
+
+Phase 3 - Reports and collaboration
+
+Run and merge in this order:
+
+1. Prompt 3.3 - Reports and export formats
+2. Prompt 3.4 - Advisor/student collaboration
+3. Prompt 3.5 - Experiment and baseline planner
+
+Before each prompt:
+1. Pull the latest stable branch.
+2. Check whether Vighnesh or Rohan changed a shared project field.
+3. Complete and test only the selected prompt.
+4. Submit or push it for review.
+5. Wait for Vighnesh to merge it.
+6. Pull the latest stable branch again.
+
+Do not start Prompt 3.3 until the evidence response in Prompt 3.2 is confirmed.
+Do not start Prompt 3.5 until innovation and snapshot APIs are confirmed.
+Do not edit Batch 1 or Batch 2 backend files without Vighnesh's approval.
+Keep the existing React, Vite, Tailwind, and dark-mode design.
+
+
+================================================================
+BATCH 3 - WORKFLOW, REPORTING, AND COLLABORATION
+================================================================
+
+
+Prompt 3.1 - Project Snapshot and History System
+
+Update the frontend and backend to save and restore complete analysis snapshots.
+
+Implement:
+- Versioned project analyses
+- Snapshot creation after every successful analysis
+- Snapshot history in the UI
+- Snapshot comparison view
+- Restore an earlier snapshot
+- JSON export for the complete snapshot
+- Database and API support
+- Clear indication of demo versus live analysis
+- Source and dataset status for every snapshot
+- Deletion and archive options
+
+Do not lose the original project form or source metadata when restoring a snapshot.
+
+Merge this prompt before starting Prompt 3.2.
+
+
+Prompt 3.2 - Evidence Interface
+
+Update the React frontend to display evidence throughout the application.
+
+Implement:
+- Evidence badges on claims and scores
+- Evidence drawer or modal showing source, quotation, section, page, DOI, and URL
+- Verified, partially supported, and unsupported states
+- Accept/reject controls for claims
+- Missing-evidence indicators
+- Loading, empty, error, and partial-provider states
+- Responsive layouts
+- Accessible dialogs and buttons
+- TypeScript interfaces for the new API response fields
+
+Keep the existing Tailwind design and dark mode consistent.
+
+Merge after the evidence API is stable.
+Coordinate with Vighnesh before changing claim or evidence fields.
+
+
+Prompt 3.3 - Reports and Academic Export Formats
+
+Extend frontend/src/components/ReportTab.jsx and the report backend.
+
+Implement exports for:
+- Printable HTML/PDF
+- Markdown
+- JSON
+- BibTeX
+- Zotero-compatible RIS
+- Zotero or academic import fields where practical
+
+The report must include:
+- Executive summary
+- Project description
+- Sources
+- Evidence
+- Methodology information
+- Confidence values
+- Verified and rejected claims
+- Dataset information
+- Innovation recommendations
+- Limitations
+- Snapshot date and version
+
+Add a preview before export.
+Prevent export when required evidence is missing.
+
+Merge after Prompt 3.2.
+
+
+Prompt 3.4 - Advisor and Student Collaboration
+
+Implement collaboration for students and advisors.
+
+Create:
+- Project members and roles
+- Invite or assignment workflow
+- Comments on claims, papers, datasets, and recommendations
+- Resolved/unresolved comment states
+- Advisor approval or rejection
+- Activity history
+- Permissions preventing unauthorized edits
+- Project-sharing controls
+- Frontend components for comments and approvals
+
+Do not expose private projects or analysis history to unauthorized users.
+
+Merge after snapshot and evidence interfaces are stable.
+
+
+Prompt 3.5 - Experiment and Baseline Planner
+
+Convert an evidence-based project plan into experiments.
+
+Implement:
+- Recommended baseline models or methods
+- Required datasets
+- Evaluation metrics
+- Training and testing phases
+- Resource requirements
+- Success criteria
+- Estimated effort
+- Risks and dependencies
+- Milestone assignments
+- Save and reopen the experiment plan
+- Export the experiment plan
+- Integration with innovation recommendations
+
+Use evidence identifiers in the plan so decisions remain traceable.
+
+Merge this prompt last within Batch 3.
+
+
+Batch 3 required merge order:
+
+3.1
+3.2
+3.3
+3.4
+3.5
+
+
+================================================================
+ROHAN - BATCH 4
+================================================================
+
+Owner: Rohan
+
+Assigned work:
+- Literature update alerts
+- Project milestone roadmaps
+- Cost and hardware estimation
+- GitHub repository comparison
+- Human feedback and personalization
+
+Priority: second
+
+
+Rohan push and pull sequence
+
+Phase 1 - Wait for shared project and source contracts
+
+1. Wait while Vighnesh merges Prompt 1.1.
+2. After Vighnesh announces the merge, pull the latest stable branch.
+3. Start Prompt 4.4 because it is the most independent feature.
+4. Submit or push Prompt 4.4 only after local testing.
+5. Wait for Vighnesh to review and merge it.
+6. Pull the latest stable branch after the merge.
+
+
+Phase 2 - Project and hardware planning
+
+Run and merge in this order:
+
+1. Prompt 4.2 - Project milestone roadmap
+2. Prompt 4.3 - Cost and hardware estimation
+3. Prompt 4.1 - Literature and dataset alerts
+4. Prompt 4.5 - Human feedback and personalization
+
+Before each prompt:
+1. Pull the latest stable branch.
+2. Check that project, innovation, snapshot, and source fields are stable.
+3. Complete and test only the selected prompt.
+4. Submit or push it for review.
+5. Wait for Vighnesh to merge it.
+6. Pull the latest stable branch again.
+
+Do not start Prompt 4.2 before project snapshots and innovation APIs are confirmed.
+Do not start Prompt 4.1 before alert provider fields are approved.
+Do not merge Prompt 4.5 until ranking behavior is tested.
+Do not change core evidence schemas without Vighnesh's approval.
+
+
+================================================================
+BATCH 4 - MONITORING AND ADVANCED PERSONALIZATION
+================================================================
+
+
+Prompt 4.1 - Literature and Dataset Update Alerts
+
+Add alert subscriptions for project topics.
+
+Implement:
+- Create, edit, pause, and delete alerts
+- Paper matching
+- Dataset matching
+- Patent or research-gap matching where available
+- Notification records
+- Email or in-app notification support
+- A scheduled background task
+- Configurable search period
+- Duplicate notification prevention
+- A delivery status view
+- Manual alert testing
+
+Store the query and source provider used for each alert.
+Use provider-independent notification structures.
+
+Merge after project and source models are stable.
+
+
+Prompt 4.2 - Project Milestone Roadmap
+
+Convert the project into a milestone roadmap.
+
+Implement:
+- Literature review milestone
+- Dataset collection and validation milestone
+- Baseline implementation milestone
+- Main implementation milestone
+- Evaluation milestone
+- Report and presentation milestones
+- Dates, effort, dependencies, risks, and owners
+- Kanban or checklist interface
+- Save and reopen roadmaps
+- Export to Markdown and JSON
+- Adjustment for project level and technologies
+- Integration with innovation recommendations
+
+Do not present estimated time or cost as guaranteed.
+
+Merge after innovation and project snapshot APIs are available.
+
+
+Prompt 4.3 - Cost and Hardware Estimation
+
+Implement a hardware and cost-estimator for project workloads.
+
+Implement:
+- Model or workload selection
+- Dataset size input
+- Target hardware input
+- Training and inference estimates
+- Storage requirements
+- Optional cloud-cost estimates
+- Confidence and assumptions
+- Low, expected, and high estimates
+- Warning for missing or uncertain inputs
+- Save and compare hardware scenarios
+- Clear disclaimers
+
+Base estimates on configurable formulas or trusted reference tables.
+Do not present guesses as measurements.
+
+Merge after roadmap structures are stable.
+
+
+Prompt 4.4 - GitHub Repository Comparison
+
+Add existing-project and repository comparison using GitHub data.
+
+Implement:
+- Repository search
+- Stars, forks, license, language, activity, release, and issue metadata
+- Implementation comparison
+- Potentially reused technologies
+- Maintenance and activity risk
+- Similarity with the submitted project
+- Source URLs
+- GitHub API rate-limit handling
+- Warning for unknown or restrictive licenses
+- Human-readable review cards
+- Save repositories as project references
+
+Do not present repository similarity as academic novelty.
+
+This is the recommended first prompt for Rohan because it is comparatively independent.
+
+Merge after the shared source/reference model is available.
+
+
+Prompt 4.5 - Human Feedback and Personalization
+
+Implement feedback that improves future project rankings.
+
+Implement:
+- Accept/reject controls for papers
+- Accept/reject controls for datasets
+- Accept/reject controls for innovations
+- Feedback reason fields
+- Per-project feedback history
+- User preference storage
+- Re-ranking based on accepted and rejected items
+- Feedback explanation
+- Reset preferences
+- Privacy and data-deletion controls
+- A simple activity dashboard
+
+Feedback should improve ranking only.
+It must not hide evidence or fabricate evidence.
+
+Merge this prompt last within Batch 4.
+
+
+Batch 4 required merge order:
+
+4.4
+4.2
+4.3
+4.1
+4.5
+
+
+================================================================
+FINAL TEAM MERGE AND INTEGRATION SEQUENCE
+================================================================
+
+1. Vighnesh completes and merges Prompt 1.1.
+2. Everyone pulls the stable main branch.
+3. Santosh starts Prompt 3.1.
+4. Rohan starts Prompt 4.4.
+5. Vighnesh completes Prompt 1.2, then 1.3, then 1.4, then 1.5.
+6. Vighnesh merges each Batch 1 prompt individually.
+7. Everyone pulls after each Batch 1 merge that changes shared fields.
+8. Vighnesh starts and merges Batch 2 prompts in order.
+9. Santosh merges 3.1, 3.2, 3.3, 3.4, and 3.5 in order.
+10. Rohan merges 4.4, 4.2, 4.3, 4.1, and 4.5 in order.
+11. Vighnesh performs final integration testing.
+12. Team fixes integration bugs before final delivery.
+
+
+Rules that prevent duplicate or conflicting work:
+
+- Do not run a shared-file prompt on multiple PCs at the same time.
+- Do not merge a pull request with unresolved conflicts.
+- Do not change API fields after another team member starts using them.
+- Pull before starting each prompt.
+- Push or submit only after local testing.
+- Merge one prompt at a time.
+- Announce every merge to the team.
+- Keep database, backend, and frontend field names identical.
+- Keep demo behavior compatible with live API behavior.
+- Ask Vighnesh before changing any core shared file.
